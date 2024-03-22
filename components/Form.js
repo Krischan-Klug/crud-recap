@@ -1,13 +1,17 @@
 import { useRouter } from "next/router";
 
-export default function Form({ onAddPlace, onSubmit }) {
+export default function Form({ onAddPlace, onEditPlace, id }) {
   const router = useRouter();
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    onAddPlace(data);
+    if (onAddPlace) {
+      onAddPlace(data);
+    } else if (onEditPlace) {
+      onEditPlace(id, data);
+    }
     router.push("/");
   }
   return (

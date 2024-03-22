@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import EditForm from "@/components/EditForm";
+import Form from "@/components/Form";
 
 export default function Edit({ handleEditPlace }) {
   const router = useRouter();
@@ -8,7 +9,7 @@ export default function Edit({ handleEditPlace }) {
   return (
     <>
       <h1>Edit</h1>
-      <EditForm onEdditPlace={handleEditPlace} id={id}></EditForm>
+      <Form onEditPlace={handleEditPlace} id={id}></Form>
     </>
   );
 }
