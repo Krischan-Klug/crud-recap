@@ -20,6 +20,17 @@ export default function App({ Component, pageProps }) {
 
     setPlaces([...places, newPlace]);
   }
+
+  function handleEditPlace(id, newPlace) {
+    setPlaces(
+      places.map((place) => {
+        if (place.id === id) {
+          return newPlace;
+        }
+        return place;
+      })
+    );
+  }
   return (
     <>
       <GlobalStyle />
@@ -28,6 +39,7 @@ export default function App({ Component, pageProps }) {
         places={places}
         handleAddPlace={handleAddPlace}
         handleDeletePlace={handleDeletePlace}
+        handleEditPlace={handleEditPlace}
       />
     </>
   );

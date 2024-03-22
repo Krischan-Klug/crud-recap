@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-export default function Form({ onAddPlace }) {
+export default function Form({ onAddPlace, onSubmit }) {
   const router = useRouter();
   function handleSubmit(event) {
     event.preventDefault();
