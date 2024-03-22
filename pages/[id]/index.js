@@ -1,14 +1,13 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-export default function DetailView({ places }) {
+export default function DetailView({ places, handleDeletePlace }) {
   const router = useRouter();
   const { id } = router.query;
 
   const placeToShow = places.find((place) => place.id === id);
-  console.log(router.query);
 
-  if (!router.isReady) {
+  if (!placeToShow) {
     return <h1>Place not found</h1>;
   }
 
@@ -23,6 +22,8 @@ export default function DetailView({ places }) {
         alt="imageLOL"
       ></Image>
       <p>{placeToShow.description}</p>
+      <button onClick={() => router.back()}>Back</button>
+      <button onClick={() => handleDeletePlace(placeToShow.id)}>Delete</button>
     </>
   );
 }

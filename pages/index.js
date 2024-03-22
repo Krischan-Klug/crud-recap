@@ -4,6 +4,10 @@ import { useRouter } from "next/router";
 
 export default function HomePage({ places, handleAddPlace }) {
   const router = useRouter();
+
+  if (!places) {
+    return <h1>Loading...</h1>;
+  }
   return (
     <>
       <h1>Home</h1>
@@ -16,7 +20,16 @@ export default function HomePage({ places, handleAddPlace }) {
       </button>
       <ul>
         {places.map((place) => (
-          <PlaceCard place={place} />
+          <li key={place.id}>
+            <PlaceCard place={place} />
+            <button
+              onClick={() => {
+                router.push(`/${place.id}`);
+              }}
+            >
+              DetailView
+            </button>
+          </li>
         ))}
       </ul>
     </>
