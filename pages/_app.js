@@ -25,6 +25,8 @@ export default function App({ Component, pageProps }) {
     setPlaces(
       places.map((place) => {
         if (place.id === id) {
+          newPlace = { id: uuidv4(), ...newPlace };
+          //console.log(newPlace);
           return newPlace;
         }
         return place;

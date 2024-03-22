@@ -22,8 +22,11 @@ export default function DetailView({ places, handleDeletePlace }) {
         alt="imageLOL"
       ></Image>
       <p>{placeToShow.description}</p>
-      <button onClick={() => router.back()}>Back</button>
+      <button onClick={() => router.push("/")}>Back</button>
       <button onClick={() => handleDeletePlace(placeToShow.id)}>Delete</button>
+      <button onClick={() => router.push(`/${placeToShow.id}/edit`)}>
+        Edit
+      </button>
     </>
   );
 }
