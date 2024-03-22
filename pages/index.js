@@ -1,7 +1,24 @@
-export default function HomePage() {
+import Form from "@/components/Form";
+import PlaceCard from "@/components/PlaceCard";
+import { useRouter } from "next/router";
+
+export default function HomePage({ places, handleAddPlace }) {
+  const router = useRouter();
   return (
-    <div>
-      <h1>Hello from Next.js</h1>
-    </div>
+    <>
+      <h1>Home</h1>
+      <button
+        onClick={() => {
+          router.push("/create");
+        }}
+      >
+        Create
+      </button>
+      <ul>
+        {places.map((place) => (
+          <PlaceCard place={place} />
+        ))}
+      </ul>
+    </>
   );
 }
